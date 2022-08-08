@@ -262,5 +262,4 @@ export class ProductosPage implements OnInit {
   getColor(comprado: boolean){
     return (comprado) ? 'success' : 'light';
   }
-  
 }
