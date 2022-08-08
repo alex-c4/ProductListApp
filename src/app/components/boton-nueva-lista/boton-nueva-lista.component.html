@@ -1,0 +1,29 @@
+<div id="container">
+
+<ion-list>
+  <ion-item>
+
+    <ion-input 
+      type="text"
+      placeholder="Nueva lista"
+      [(ngModel)]="nombreLista"></ion-input>
+  </ion-item>
+    
+  <br>
+    
+  <ion-button 
+    color="primary"
+    size="large"
+    (click)="crearLista()">
+    <ion-icon name="add"></ion-icon>
+  </ion-button>
+
+  <ion-button 
+    color="tertiary"
+    (click)="listas()"
+    size="large">
+    <ion-icon name="list"></ion-icon>
+  </ion-button>
+
+</ion-list>
+</div>

@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="tertiary"></ion-back-button>
+    </ion-buttons>
+    
+    <ion-title>Listas de Productos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="addLista()">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-list>
+
+    <ion-item-sliding #sliding
+      *ngFor="let item of lista; let i = index">
+      <ion-item
+        [color]="getColor(item)">
+        <ion-label 
+          [ngClass]="{'terminada': isFinished(item)}"
+          (click)="show(item)">
+          {{ item.nombre }}
+          <p>{{ item.productos.length }} Productos</p>
+        </ion-label>
+        <ion-note slot="end">
+          <strong>{{ item.precioDolar }}$</strong>
+        </ion-note>
+      </ion-item>
+
+      <ion-item-options side="end">
+
+        <ion-item-option (click)="show(item)" color="primary">
+          <ion-icon slot="icon-only" size="small" name="eye"></ion-icon>
+        </ion-item-option>
+
+        <ion-item-option (click)="borrar(i, sliding)" color="danger">
+          <ion-icon slot="icon-only" size="small" name="trash"></ion-icon>
+        </ion-item-option>
+
+        <ion-item-option (click)="editar(i, item.nombre, sliding)" color="tertiary">
+          <ion-icon slot="icon-only" size="small" name="pencil"></ion-icon>
+        </ion-item-option>
+
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

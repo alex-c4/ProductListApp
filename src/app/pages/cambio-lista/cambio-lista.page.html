@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    
+
+    <ion-buttons slot="start">
+      <ion-back-button (click)="irListaPage()" color="tertiary"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Cambio de lista</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-select 
+        interface="alert"
+        placeholder="Seleccione la lista de productos" 
+        (ionChange)="mostrarNuevo($event)">
+        <ion-select-option value="0">Crear nueva lista...</ion-select-option>
+        <ion-select-option *ngFor="let item of listaLocal" value="{{ item.id }}">{{ item.nombre }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <app-boton-nueva-lista *ngIf="showNuevo" [producto]="producto" [productoIndex]="productoIndex"></app-boton-nueva-lista>
+
+</ion-content>
